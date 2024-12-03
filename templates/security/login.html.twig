@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-light">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Connexion</h1>
+
+                    <form method="post" action="{{ path('app_login') }}">
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Adresse email</label>
+                            <input type="text" id="email" name="_username" class="form-control form-control-lg" value="{{ app.request.get('_username') }}" required autofocus>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label">Mot de passe</label>
+                            <input type="password" id="password" name="_password" class="form-control form-control-lg" required>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input type="checkbox" id="remember_me" name="_remember_me" class="form-check-input">
+                            <label for="remember_me" class="form-check-label">Se souvenir de moi</label>
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Se connecter</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <a href="{{ path('app_register') }}" class="text-muted">Pas encore inscrit ? Créez un compte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

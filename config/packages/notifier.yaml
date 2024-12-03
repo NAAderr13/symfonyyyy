@@ -1,0 +1,6 @@
+# config/packages/notifier.yaml
+framework:
+    notifier:
+        texter_transports:
+            email: '%env(MAILER_DSN)%'
+        message_bus: false

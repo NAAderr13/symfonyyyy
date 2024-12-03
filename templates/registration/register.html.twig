@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
+{% endblock %}
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg" style="max-width: 400px; width: 100%; padding: 20px;">
+        <h2 class="text-center text-primary mb-4">Créer un compte</h2>
+
+        {# Affichage des messages flash #}
+        {% for flashError in app.flashes('registration_error') %}
+            <div class="alert alert-danger">
+                {{ flashError }}
+            </div>
+        {% endfor %}
+        {% for flashSuccess in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ flashSuccess }}
+            </div>
+        {% endfor %}
+
+        {# Formulaire d'inscription #}
+        {{ form_start(registrationForm, {'attr': {'class': 'form'}}) }}
+
+        <div class="form-group mb-3">
+            {{ form_label(registrationForm.email, 'Adresse email') }}
+            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre email'}}) }}
+            {{ form_errors(registrationForm.email) }}
+        </div>
+
+        <div class="form-group mb-3">
+            {{ form_label(registrationForm.nom, 'Nom') }}
+            {{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre nom'}}) }}
+            {{ form_errors(registrationForm.nom) }}
+        </div>
+
+        <div class="form-group mb-3">
+            {{ form_label(registrationForm.prenom, 'Prénom') }}
+            {{ form_widget(registrationForm.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre prénom'}}) }}
+            {{ form_errors(registrationForm.prenom) }}
+        </div>
+
+        <div class="form-group mb-3">
+            {{ form_label(registrationForm.filiere, 'Filière') }}
+            {{ form_widget(registrationForm.filiere, {'attr': {'class': 'form-control', 'placeholder': 'Sélectionnez votre filière'}}) }}
+            {{ form_errors(registrationForm.filiere) }}
+        </div>
+
+        <div class="form-group mb-4">
+            {{ form_label(registrationForm.plainPassword, 'Mot de passe') }}
+            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Choisissez un mot de passe'}}) }}
+            {{ form_errors(registrationForm.plainPassword) }}
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100 py-2">S'inscrire</button>
+        </div>
+
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+
+
+
+{% endblock %}

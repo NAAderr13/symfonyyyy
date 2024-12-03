@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        /* Style global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* En-tête avec logo */
+        .header {
+            background-color: #333;
+            padding: 15px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        /* Section de recherche */
+        .search-section {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .search-section form {
+            display: inline-block;
+        }
+
+        .search-section button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-section button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Liste des livres populaires */
+        .popular-books {
+            padding: 40px 20px;
+            background-color: white;
+            margin-top: 20px;
+        }
+
+        .popular-books h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .book-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .book-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .book-item img {
+            width: 150px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .book-item h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .book-item p {
+            font-size: 1em;
+            color: #777;
+        }
+
+        .book-item a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .book-item a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+  
+
+    <!-- Section de recherche -->
+    <section class="search-section">
+        <form action="{{ path('search_books') }}" method="get">
+            <button type="submit">Rechercher</button>
+        </form>
+    </section>
+
+    <!-- Liste des livres populaires -->
+    <section class="popular-books">
+        <h2>Livres populaires</h2>
+        <div class="book-list">
+            {% for book in popular_books %}
+                <div class="book-item">
+                    <h3>{{ book.title }}</h3>
+                    <p>Auteur : {{ book.author }}</p>
+                    <img src="{{ asset('images/bookk1.webp') }}" alt="Book image" />
+                    <a href="{{ path('home_livre_show', {'id': book.id}) }}">Voir Détails</a>
+                </div>
+            {% else %}
+                <p>Aucun livre trouvé.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

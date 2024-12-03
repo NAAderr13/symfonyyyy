@@ -1,0 +1,7 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+emprunt:
+    path: /emprunt
+    controller: App\Controller\EmpruntController::emprunter

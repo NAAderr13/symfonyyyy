@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Genre{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Style personnalisé pour la page de création */
+        .container {
+            max-width: 800px;
+            margin-top: 40px;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-container {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .form-container label {
+            font-weight: 500;
+        }
+        .form-container .form-control {
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1rem;
+        }
+        .form-container .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1rem;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Create new Genre</h1>
+
+        <div class="form-container">
+            {{ include('genre/_form.html.twig') }}
+        </div>
+
+        <a href="{{ path('app_genre_index') }}" class="back-link">Back to list</a>
+    </div>
+{% endblock %}
